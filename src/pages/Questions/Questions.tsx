@@ -5,7 +5,7 @@ import Typography from "../../styles/Typography"
 import Tag from '../../components/Tag'
 import { codeSample1 } from './codeSamples'
 import Answers from './Answers'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
 import { getQuestionById } from '../../redux/questionSlice'
 import { getTime } from '../../utils/fromNow'
@@ -17,10 +17,11 @@ export default function Questions() {
 
     const navigate = useNavigate()
     const params = useParams()
+    const location = useLocation()
 
     const dispatch = useAppDispatch()
 
-    const question = useAppSelector(state => state.question.currentQuestion.quesiton)
+    let question = useAppSelector(state => state.question.currentQuestion.quesiton)
     const isLoaded = useAppSelector(state => state.question.currentQuestion.isFetching)
 
     const [paragraphs, setParagraphs] = useState<string[]>(["I've been trying to set up SSR with react for my personal project and have been running into some issues. The console is throwing a bunch of errors, the first one of which is the warning from the title, and then it defaults to CSR. I am not using NextJS, just express, ejs, node, and react. My setup is as follows:", "My server.jsx file, which handles the GET request, renders the component to html, inserts it into my html with ejs, and sends it to the client"])
@@ -28,7 +29,11 @@ export default function Questions() {
     const [answerContent, setAnswerContent] = useState()
 
     useEffect(() => {
-        if (params.questionId)
+        const slashIndex = location.pathname.lastIndexOf("/")
+        if (location.pathname.substring(slashIndex - 2, slashIndex) === "db") {
+            // dispatch(getQuestionDbByıD(params.questionId))
+        }
+        else if (params.questionId)
             dispatch(getQuestionById(params.questionId))
     }, [])
 

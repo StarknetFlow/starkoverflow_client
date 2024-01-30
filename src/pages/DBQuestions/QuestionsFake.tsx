@@ -22,16 +22,16 @@ export default function QuestionsFake(props: QuestionProps) {
         <div className='question-container my-3' style={{}}>
 
             <div className='profile-section ms-3 me-2 d-flex'>
-                <img className='profile-photo-q' />
+                <img className='profile-photo-q' src='https://www.gravatar.com/avatar/05ca3aefdd0f6c1a2cc47e0acf903dcf?s=256&d=identicon&r=PG' />
                 <div >
                     <Typography className='username mt-2 ms-3' color='blue' variant='subtitle1' >{"test account"}</Typography>
 
                 </div>
                 <Typography className='my-auto ms-2' variant='subtitle2'>·</Typography>
-                <Typography className='my-auto ms-2' variant='text' color='blue'>{(props.question.creation_date && (getTime(props.question.creation_date.getTime()) + " ago"))}</Typography>
+                <Typography className='my-auto ms-2' variant='text' color='blue'>{(props.question.creation_date && ("1 minute ago"))}</Typography>
             </div>
             <div className='mt-2 mb-3 ps-3' style={{ marginLeft: "35px" }}>
-                <div onClick={() => navigate("/questions/" + props.question._id)}>
+                <div onClick={() => navigate("/questions/db/" + props.question._id)}>
                     <Typography className='ms-3 my-2 question-title' wrap="true" color='blue' variant='subtitle1' >{props.question.title}</Typography>
 
                 </div>
@@ -50,7 +50,7 @@ export default function QuestionsFake(props: QuestionProps) {
                     <Typography className='my-auto mx-2' variant='text' color='blue'>{21 + " views"}</Typography>
                 </div>
                 <div className='tag-section d-flex me-1'>
-                    {props.question.tags.map((tag, i) => (
+                    {["javascript", "html", "css"].map((tag, i) => (
                         i < 3 && (<Tag key={i}>{tag}</Tag>)
                     ))}
                 </div>

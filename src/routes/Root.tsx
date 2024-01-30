@@ -9,6 +9,10 @@ import Login from '../pages/Register/Login'
 import Questions from '../pages/Questions/Questions'
 import AskQuestion from '../pages/Questions/AskQuestion'
 import DbQuestions from '../pages/DBQuestions/DbQuestions'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux'
+import { store, persistor } from '../redux/store'
+
 
 export default function Root() {
 
@@ -17,23 +21,32 @@ export default function Root() {
 
     return (
         <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<SignUp />} />
-                    <Route path='/' element={<SidebarLayout />} >
+            <PersistGate persistor={persistor}>
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<SignUp />} />
+                            <Route path='/' element={<SidebarLayout />} >
 
 
-                        <Route path='' element={<Home />} />
-                        <Route path='profile/:userId' element={<Profile />} />
-                        <Route path='questions/db' element={<DbQuestions />} />
-                        <Route path='questions/ask' element={<AskQuestion />} />
-                        <Route path='questions/:questionId' element={<Questions />} />
+                                <Route path='' element={<Home />} />
+                                <Route path='profile/:userId' element={<Profile />} />
+                                <Route path='questions/db' element={<DbQuestions />} />
+                                <Route path='questions/db/:questionId' element={<Questions />} />
+                                <Route path='questions/ask' element={<AskQuestion />} />
+                                <Route path='questions/:questionId' element={<Questions />} />
 
-                    </Route>
+                            </Route>
 
-                </Routes>
-            </BrowserRouter>
+                        </Routes>
+                    </BrowserRouter>
+                </Provider>
+
+            </PersistGate>
+
+
+
         </div>
     )
 }
