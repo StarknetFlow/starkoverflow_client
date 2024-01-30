@@ -1,0 +1,39 @@
+.login-page-container {
+    padding-top: 150px;
+}
+
+.signin-link {
+    color: #353397 !important;
+}
+
+.starkoverlow-link {
+    color: #0d0c4e !important;
+}
+
+.signin-link:hover {
+    color: #3734f1 !important;
+}
+
+.signin-btn {
+    border-radius: 10px !important;
+    background-color: #0d0c4e !important;
+    font-size: 12 !important;
+    font-weight: 500 !important;
+    height: 40px !important;
+}
+
+.signin-btn:hover {
+    background-color: #353397 !important;
+}
+
+.input-singin {
+    border-radius: 15px !important;
+}
+
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+    border-radius: 10px !important;
+}
+
+.css-11lq3yg-MuiGrid-root {
+    justify-content: center;
+}

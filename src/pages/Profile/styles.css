@@ -1,0 +1,63 @@
+.profile-header {
+    border-bottom: 1px solid #ddd;
+}
+
+.person-info {
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid #0d0c4e;
+}
+
+.profile-info {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.top-navigation {
+    display: flex;
+    text-align: center;
+}
+
+.nav-item {
+    padding-top: 15px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background-color: rgba(242, 190, 184, 0.2);
+    border-bottom: 1px solid #ed796c;
+}
+
+.nav-item .active {
+    border-bottom: 3px solid #ed796c;
+
+}
+
+.nav-item p {
+    width: fit-content;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+
+.nav-item-p .active {
+    border-bottom: 3px solid #ed796c;
+}
+
+.bottom-border:hover {
+    width: 20px;
+}
+
+.nav-item p {
+    font-family: 'Roboto Slab', sans;
+    font-size: 16px;
+    color: #0d0c4e;
+}

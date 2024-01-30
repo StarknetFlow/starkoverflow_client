@@ -1,0 +1,103 @@
+.questions-container {
+    margin: 20px 2px 0px 2px;
+}
+
+.tag {
+    background-color: rgb(39, 40, 34) !important;
+}
+
+.back-button {
+    height: 50px;
+    width: fit-content;
+    border-radius: 50%;
+    /* margin-left: -10px; */
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #848cac33;
+}
+
+.questions-title {
+    font-size: 24px;
+
+}
+
+.answer-btn {
+    background-color: #444c6c;
+    color: #fff;
+    border-radius: 20px;
+    width: 220px;
+    height: 45px;
+}
+
+.answer-btn:hover {
+    background-color: #0d0c4e;
+    color: #fff;
+}
+
+.ask-question-container {
+    margin: 20px 2px 0px 2px;
+}
+
+.ask-question-form {
+    margin: 20px;
+}
+
+.ask-question-form input {
+    border-radius: 15px;
+    height: 45px;
+}
+
+.ask-question-form input:focus {
+    box-shadow: none;
+    border-color: #ddd;
+}
+
+/* WebKit (Chrome, Safari) scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6a6a6a;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* Firefox scrollbar */
+/* Firefox'da ::-moz-scrollbar-* seçicileri desteklenmiyor, sadece ::-moz-scrollbar seçicisini kullanabilirsiniz */
+::-moz-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-moz-scrollbar-thumb {
+    background-color: #6a6a6a;
+    border-radius: 5px;
+}
+
+::-moz-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+/* Internet Explorer scrollbar */
+/* Internet Explorer'da ::-ms-scrollbar-* seçicileri desteklenmiyor, sadece ::-ms-scrollbar seçicisini kullanabilirsiniz */
+::-ms-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-ms-scrollbar-thumb {
+    background-color: #6a6a6a;
+    border-radius: 5px;
+}
+
+::-ms-scrollbar-track {
+    background-color: #e0e0e0;
+}
