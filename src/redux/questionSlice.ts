@@ -1,6 +1,6 @@
 import { AsyncThunk, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import * as api from "../api/index"
-import { IDBQuestions, IQuestion, IQuestionCreatePayload, IUserAuth } from "./types"
+import { IDBQuestion, IQuestion, IQuestionCreatePayload, IUserAuth } from "./types"
 import { RootState } from './store'
 // Declare and export a type for the slice's state
 
@@ -15,8 +15,12 @@ interface QuestionState {
     isFetching: boolean
   }
   dbQuestions: {
-    questions: IDBQuestions[],
+    questions: IDBQuestion[],
     isLoading: boolean
+  },
+  currentDbQuestion: {
+    question: IDBQuestion | undefined
+    isFetching: boolean
   }
 }
 
@@ -28,6 +32,10 @@ const initialState: QuestionState = {
   },
   currentQuestion: {
     quesiton: undefined,
+    isFetching: false
+  },
+  currentDbQuestion: {
+    question: undefined,
     isFetching: false
   },
   dbQuestions: {
@@ -91,16 +99,24 @@ export const createQuestion: CreateQuestionThunk = createAsyncThunk("question/cr
 })
 
 
-type GetQuestionsInDbThunk = AsyncThunk<IDBQuestions[], void, { state: RootState }>
+type GetQuestionsInDbThunk = AsyncThunk<IDBQuestion[], void, { state: RootState }>
 
-export const getQuestionsInDb: GetQuestionsInDbThunk = createAsyncThunk("question/getQuestionsOnDb", async (): Promise<IDBQuestions[]> => {
+export const getQuestionsInDb: GetQuestionsInDbThunk = createAsyncThunk("question/getQuestionsOnDb", async (): Promise<IDBQuestion[]> => {
 
   const { data } = await api.getSavedQuestions()
 
-  return data.questions as IDBQuestions[]
+  return data.questions as IDBQuestion[]
 })
 
+type GetDbQuestionByIdThunk = AsyncThunk<IDBQuestion, string, { state: RootState }>
 
+export const getDbQuestionById: GetDbQuestionByIdThunk = createAsyncThunk("question/getDbQuestionById", async (id): Promise<IDBQuestion> => {
+
+  const { data } = await api.getDbQuestionByIdReq(id)
+
+
+  return data.question as IDBQuestion
+})
 
 
 
@@ -174,6 +190,28 @@ const questionSlice = createSlice({
           isLoading: false
         }
       }
+    })
+    builder.addCase(getDbQuestionById.pending, (state) => {
+      return {
+        ...state,
+        currentDbQuestion: {
+          question: undefined,
+          isFetching: true
+        }
+      }
+    })
+    builder.addCase(getDbQuestionById.fulfilled, (state: QuestionState, action) => {
+      return {
+        ...state,
+        currentDbQuestion: {
+          question: action.payload,
+          isFetching: false
+        }
+
+      }
+    })
+    builder.addCase(getDbQuestionById.rejected, (state: QuestionState, action) => {
+      console.log(action.error)
     })
 
   }

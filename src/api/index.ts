@@ -26,3 +26,5 @@ export const createNewQuestion = async (user: IUserAuth, question: IQuestionCrea
 })
 
 export const getSavedQuestions = async () => axios.get(questionApiEndPoint + "/questions")
+
+export const getDbQuestionByIdReq = async (id: string) => axios.get(questionApiEndPoint + "/questions/db/" + id)
