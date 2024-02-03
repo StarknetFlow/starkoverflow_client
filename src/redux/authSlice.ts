@@ -46,6 +46,12 @@ export const login: LoginThunk = createAsyncThunk("auth/login", async (user): Pr
 
 })
 
+type LogoutThunk = AsyncThunk<void, void, { state: RootState }>
+
+export const logout: LogoutThunk = createAsyncThunk("auth/logout", async (): Promise<void> => { })
+
+
+
 const authSlice = createSlice({
     name: 'question',
     initialState,
@@ -73,6 +79,14 @@ const authSlice = createSlice({
                 ...state,
                 user: action.payload.user,
                 accessToken: action.payload.accessToken
+            }
+        })
+        builder.addCase(logout.fulfilled, (state, action) => {
+            return {
+                user: undefined,
+                accessToken: "",
+                questions: [],
+                registerError: false
             }
         })
     }

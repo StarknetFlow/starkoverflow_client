@@ -5,7 +5,7 @@ import { calculateMargins, calculateWidths, IMargins, IWidths } from '../utils/c
 import useWindowSize from '../utils/useWindowSize'
 import { useWindowContext } from '../context/WindowSize'
 import { useAppDispatch, useAppSelector } from '../redux/store'
-import { createUser } from '../redux/authSlice'
+import { createUser, logout } from '../redux/authSlice'
 
 export default function SidebarLayout() {
 
@@ -67,7 +67,7 @@ export default function SidebarLayout() {
                                 {!mid && <Typography className='my-auto me-4' color='blue' variant='caption2'>Saves</Typography>}
                             </div>
 
-                            <div className='sidebar-item d-flex' onClick={() => navigate("/profile")}>
+                            <div className='sidebar-item d-flex'>
                                 <i className="fa-solid fa-user mx-3 my-auto "></i>
                                 {!mid && <Typography className='my-auto me-4' color='blue' variant='caption2'>Profile</Typography>}
                             </div>
@@ -88,7 +88,7 @@ export default function SidebarLayout() {
 
                                 <button className='ask-question btn ms-4 my-4' onClick={() => navigate("/questions/ask")}>Ask Question</button>
                                 <div className='logout-btn'>
-                                    <button className='logout btn-danger btn my-4' onClick={() => navigate("/questions/ask")}>Logout</button>
+                                    <button className='logout btn-danger btn my-4' onClick={() => dispatch(logout())}>Logout</button>
                                 </div>
 
                             </>
