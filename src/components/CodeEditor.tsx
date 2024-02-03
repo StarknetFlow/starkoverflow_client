@@ -1,5 +1,4 @@
 import React from 'react';
-import MonacoEditor from '@monaco-editor/react';
 import { Highlight, themes } from "prism-react-renderer"
 
 interface CodeEditorProps {
@@ -28,11 +27,12 @@ const MyEditor = (props: CodeEditorProps) => {
           <pre style={{ ...style, fontSize: "13px", maxHeight: '500px', overflowY: 'auto', overflowX: 'auto', borderRadius: "10px" }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>
-                {/* <span>{i + 1}</span> */}
+                <span className='mt-3' style={{ visibility: "hidden" }}>xx</span>
                 {line.map((token, key) => {
                   return (
 
                     <span
+
                       key={key}
                       {...getTokenProps({
                         token,
@@ -43,6 +43,7 @@ const MyEditor = (props: CodeEditorProps) => {
                 })}
               </div>
             ))}
+            <div className='mb-3' />
           </pre>
         )}
       </Highlight>

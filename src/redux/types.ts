@@ -77,7 +77,7 @@ export interface IQuestionCreatePayload {
     content: string
 }
 
-export interface IDBQuestions {
+export interface IDBQuestion {
     _id: number,
     tags: [
         string

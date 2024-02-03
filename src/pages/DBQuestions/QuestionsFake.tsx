@@ -2,12 +2,12 @@ import React from 'react'
 import Tag from '../../components/Tag'
 import Typography from '../../styles/Typography'
 import { useWindowContext } from '../../context/WindowSize'
-import { IDBQuestions, IQuestion } from '../../redux/types'
+import { IDBQuestion, IQuestion } from '../../redux/types'
 import { getTime } from '../../utils/fromNow'
 import { useNavigate } from 'react-router-dom'
 
 interface QuestionProps {
-    question: IDBQuestions
+    question: IDBQuestion
 }
 
 export default function QuestionsFake(props: QuestionProps) {

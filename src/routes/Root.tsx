@@ -9,6 +9,7 @@ import Login from '../pages/Register/Login'
 import Questions from '../pages/Questions/Questions'
 import AskQuestion from '../pages/Questions/AskQuestion'
 import DbQuestions from '../pages/DBQuestions/DbQuestions'
+import FakeQuestions from '../pages/Questions/FakeQuestions'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store'
@@ -28,12 +29,10 @@ export default function Root() {
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<SignUp />} />
                             <Route path='/' element={<SidebarLayout />} >
-
-
                                 <Route path='' element={<Home />} />
                                 <Route path='profile/:userId' element={<Profile />} />
                                 <Route path='questions/db' element={<DbQuestions />} />
-                                <Route path='questions/db/:questionId' element={<Questions />} />
+                                <Route path='questions/db/:questionId' element={<FakeQuestions />} />
                                 <Route path='questions/ask' element={<AskQuestion />} />
                                 <Route path='questions/:questionId' element={<Questions />} />
 
@@ -44,9 +43,6 @@ export default function Root() {
                 </Provider>
 
             </PersistGate>
-
-
-
         </div>
     )
 }

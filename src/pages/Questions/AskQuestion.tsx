@@ -49,6 +49,7 @@ export default function AskQuestion() {
                     contentError: ""
                 })
                 dispatch(createQuestion(validatedData))
+                alert("successfully posted")
             }
         } catch (error: any) {
 
