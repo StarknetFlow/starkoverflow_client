@@ -1,9 +1,11 @@
 import axios from "axios";
 import { ICreateUserPayload, IQuestion, IQuestionCreatePayload, IUser, IUserAuth, IUserToLoginPayload } from "../redux/types";
 
-const questionApiEndPoint = "http://localhost:8080/questions"
-const userApiEndPoint = "http://localhost:8080/user"
-const authApiEndpoint = "http://localhost:8080/auth"
+const rootEndPoint = "https://starkoverflow-server.onrender.com"
+
+const questionApiEndPoint = rootEndPoint + "/questions"
+const userApiEndPoint = rootEndPoint + "/user"
+const authApiEndpoint = rootEndPoint + "/auth"
 
 export const getAllPosts = async () => await axios.get(questionApiEndPoint)
 
@@ -28,3 +30,5 @@ export const createNewQuestion = async (user: IUserAuth, question: IQuestionCrea
 export const getSavedQuestions = async () => axios.get(questionApiEndPoint + "/questions")
 
 export const getDbQuestionByIdReq = async (id: string) => axios.get(questionApiEndPoint + "/questions/db/" + id)
+
+export const getTokenStackoverflow = async () => axios.get(rootEndPoint + "/authorize")

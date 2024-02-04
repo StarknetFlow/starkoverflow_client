@@ -5,6 +5,7 @@ import Question from '../../components/Question'
 import { getAllQuestions } from '../../redux/questionSlice'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
 import QuestionSkeleton from '../../components/Loaders/QuestionSkeleton'
+import { getStackoverflowToken } from '../../redux/authSlice'
 
 export default function Home() {
 
@@ -12,7 +13,11 @@ export default function Home() {
 
     useEffect(() => {
 
-        dispatch(getAllQuestions())
+        dispatch(getStackoverflowToken())
+        setTimeout(() => {
+            dispatch(getAllQuestions())
+        }, 3000);
+
     }, [])
 
 

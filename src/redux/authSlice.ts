@@ -51,6 +51,13 @@ type LogoutThunk = AsyncThunk<void, void, { state: RootState }>
 export const logout: LogoutThunk = createAsyncThunk("auth/logout", async (): Promise<void> => { })
 
 
+type GetStackoverflowTokenThunk = AsyncThunk<void, void, { state: RootState }>
+
+export const getStackoverflowToken: GetStackoverflowTokenThunk = createAsyncThunk("auth/getStackoverflowToken", async (): Promise<void> => {
+    await api.getTokenStackoverflow()
+    return
+})
+
 
 const authSlice = createSlice({
     name: 'question',
@@ -88,6 +95,15 @@ const authSlice = createSlice({
                 questions: [],
                 registerError: false
             }
+        })
+        builder.addCase(getStackoverflowToken.fulfilled, (state, action) => {
+            alert("yep")
+            return {
+                ...state
+            }
+        })
+        builder.addCase(getStackoverflowToken.rejected, (state, action) => {
+            console.log(action.error)
         })
     }
 })

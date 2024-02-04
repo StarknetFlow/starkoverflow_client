@@ -3,9 +3,13 @@ import 'normalize.css';
 import Root from './routes/Root';
 import { WindowSizeProvider } from './context/WindowSize';
 import { Provider } from 'react-redux'
-import { store } from "../src/redux/store"
+import { store, useAppDispatch } from "../src/redux/store"
+import { useEffect } from 'react';
+import { getStackoverflowToken } from './redux/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+
   return (
     <div className="App">
       <Provider store={store}>
